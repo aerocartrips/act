@@ -286,7 +286,7 @@ export default function Page() {
             <div className="">
               Next -{" "}
               <Link
-                href="/sky-airlines/faq"
+                href="/sky-airlines-faq"
                 className={`hover:text-blue-700 text-blue-700 underline`}
               >
                 FAQ

@@ -77,10 +77,10 @@ export default function Footer() {
         <div>
           <h3 className="font-bold mb-2">Follow us ↗</h3>
           <div className="flex items-center space-x-4 text-xl">
-            <span><img src="facebook.png" className="w-8 invert" /></span>
-            <span><img src="twitter.png" className="w-8 invert" /></span>
-            <span><img src="instagram.png" className="w-8 invert" /></span>
-            <span><img src="youtube.png" className="w-10 invert" /></span>
+            <span><img src="/facebook.png" className="w-8 invert" /></span>
+            <span><img src="/twitter.png" className="w-8 invert" /></span>
+            <span><img src="/instagram.png" className="w-8 invert" /></span>
+            <span><img src="/youtube.png" className="w-10 invert" /></span>
           </div>
         </div>
       </div>

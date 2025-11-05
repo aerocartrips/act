@@ -444,7 +444,7 @@ export default function Page() {
           <div className="">
             Next -{" "}
             <Link
-              href="/sky-airlines/how-to-book-sky-tickets"
+              href="/how-to-book-sky-tickets-sky-airlines"
               className={`hover:text-blue-700 text-blue-700 underline`}
             >
               How to book ticket
