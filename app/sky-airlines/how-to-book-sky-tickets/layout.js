@@ -1,27 +1,5 @@
-// app/layout.js or app/layout.tsx
 
 import Script from "next/script";
-// import { headers } from 'next/headers';
-
-// const headersList = headers();
-//   const host = headersList.get("host");
-//   const protocol = host?.includes("local") ? "http" : "https";
-//   const host_url = `${protocol}://${host}`;
-
-// export const metadata = {
-//   title: "Sky Customer Service Number +1 844 607 4888",
-//   description:
-//     "Looking for Sky customer service? +1 844 607 4888 Get the most up-to-date phone numbers, ideal call hours, and step-by-step guidance to resolve your issue—plus, Sky get human.",
-//   charset: "utf-8",
-//   keywords:
-//     "Sky customer service, Sky phone number, Sky customer phone number, Sky customer service phone number, Sky customer service phone, call Sky, Sky support number, Sky customer number, Sky customer service number, Sky 888 number, Sky customer support number, Sky 888, Sky toll free, Sky customer service toll free, Sky customer service 888, Sky customer service 888 number, Sky customer service 888 phone, Sky contact number, Sky contact phone, Sky contact, Sky customer service contact, Sky customer service contact number, Sky customer service email, Sky customer service email address, Sky customer service chat, Sky customer service live chat, contact Sky, contact Sky customer service, Sky.com phone number, Sky.com customer service, Egencia LLC phone number, Egencia LLC customer service, Sky phone number, Sky customer service, Sky get human,",
-//   robots: "index, follow",
-//   alternates: {
-//     canonical: `https://aerocartrips.com/Sky`,
-//   },
-//   viewport: "width=device-width, initial-scale=1",
-// };
-      {/* SEO Meta */}
 
 export const metadata = {
   title: "How to Book a Flight on Sky Airline — Step-by-Step Guide 2025",
@@ -57,74 +35,6 @@ export const metadata = {
 };
 
 
-// const org = {
-//   "@context": "https://schema.org",
-//   "@type": "Organization",
-//   name: "Sky Air Lines",
-//   url: "https://www.Sky.com",
-//   logo: `https://aerocartrips.com/assets/airline/Sky-logo1.webp`,
-//   image: `https://aerocartrips.com/assets/airline/Sky-logo1.webp`,
-//   description:
-//     "Sky Air Lines, Inc., headquartered in Atlanta, Georgia, is a major U.S. airline operating through nine hubs. Its largest hub, in terms of passenger traffic and flight departures, is Hartsfield–Jackson Atlanta International Airport.",
-//   telephone: "+1 844 607 4888",
-//   foundingDate: "1928-12-03",
-//   foundingLocation: "United States",
-//   numberOfEmployees: 103000,
-//   memberOf: [
-//     { "@type": "Organization", name: "SkyTeam" },
-//     { "@type": "Organization", name: "SkyTeam Cargo" },
-//   ],
-//   areaServed: { "@type": "Country", name: "United States" },
-//   address: {
-//     "@type": "PostalAddress",
-//     addressLocality: "Atlanta",
-//     addressRegion: "GA",
-//     addressCountry: "US",
-//   },
-//   contactPoint: {
-//     "@type": "ContactPoint",
-//     telephone: "+1 844 607 4888",
-//     contactType: "Customer Service",
-//     areaServed: "US",
-//     availableLanguage: ["English", "Spanish"],
-//   },
-//   sameAs: [
-//     "https://www.facebook.com/Sky",
-//     "https://www.linkedin.com/company/Sky-air-lines",
-//     "https://www.youtube.com/Sky",
-//     "https://www.instagram.com/Sky",
-//   ],
-
-//   employee: [
-//     {
-//       "@type": "Person",
-//       name: "Dan Janki",
-//       jobTitle: "CFO",
-//     },
-//     {
-//       "@type": "Person",
-//       name: "Rahul Samant",
-//       jobTitle: "CIO",
-//     },
-//     {
-//       "@type": "Person",
-//       name: "Glen W. Hauenstein",
-//       jobTitle: "President",
-//     },
-//   ],
-//   additionalProperty: [
-//     {
-//       "@type": "PropertyValue",
-//       name: "Fleet Size",
-//       value: "987",
-//     },
-//     {
-//       "@type": "PropertyValue",
-//       name: "Destinations Served",
-//       value: "311",
-//     },
-//   ],
-// };
 const faqItems = [
   {
     question: "How do I book a Sky Airline flight?",

@@ -1,4 +1,3 @@
-import ContactSection from "@/components/ContactSection";
 import Image from "next/image";
 import Link from "next/link";
 

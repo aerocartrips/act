@@ -22,7 +22,7 @@ export default function sitemap() {
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/faq",
+      url: "https://aerocartrips.com/sky-airlines/faq",
       lastModified: twoHoursAgo,
       changeFrequency: "Weekly",
       priority: 1.0,
