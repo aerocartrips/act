@@ -5,7 +5,7 @@ export default function Page() {
     <div className="px-4 ">
       {/* Hero Section */}
 
-      <div className="min-h-[95vh] flex justify-center items-center">
+      <div className="min-h-[95vh] w-full flex justify-center items-center">
         <div>
           <div className="text-4xl md:text-6xl text-center">Aerocartrips Private Limited</div>
           <p className="text-center py-8">
