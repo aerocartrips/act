@@ -4,23 +4,23 @@ import Script from "next/script";
 
 
 export const metadata = {
-  title: "How to Book a Flight on Sky Airline — Step-by-Step Guide 2025",
+  title: "Sky Airlines Frequently Asked Questions - FAQ for services",
   description:
-    "Learn how to book your Sky Airline flight in 10 easy steps. Follow this complete guide or call +1-844-607-4888 for instant booking and travel assistance.",
+    "Connect with Sky Airlines’ customer service team for any inquiries by calling +1 844 607 4888 for immediate assistance. For support, reservations, or general assistance, reach Sky Airlines at any time.",
   charset: "utf-8",
   viewport: "width=device-width, initial-scale=1",
   robots: "index, follow, max-snippet:160, max-image-preview:large",
   keywords:
     "Sky customer service, Sky phone number, Sky customer phone number, Sky customer service phone number, Sky customer service phone, call Sky, Sky support number, Sky customer number, Sky customer service number, Sky 888 number, Sky customer support number, Sky 888, Sky toll free, Sky customer service toll free, Sky customer service 888, Sky customer service 888 number, Sky customer service 888 phone, Sky contact number, Sky contact phone, Sky contact, Sky customer service contact, Sky customer service contact number, Sky customer service email, Sky customer service email address, Sky customer service chat, Sky customer service live chat, contact Sky, contact Sky customer service, Sky.com phone number, Sky.com customer service, Egencia LLC phone number, Egencia LLC customer service, Sky phone number, Sky customer service, Sky get human,",
   alternates: {
-    canonical: `https://aerocartrips.com/sky-airlines/faq`,
+    canonical: `https://aerocartrips.com/sky-airlines-faq`,
   },
 
   openGraph: {
     title: "Sky Customer Service +1 844 607 4888",
     description:
       "Call Sky Customer Service +1 844 607 4888 — reservations, baggage, refunds, SkyMiles. See ideal call hours & steps to reach a human agent.",
-    url: "https://aerocartrips.com/sky-airlines/faq",
+    url: "https://aerocartrips.com/sky-airlines-faq",
     siteName: "Aerocartrips",
     type: "website",
   },

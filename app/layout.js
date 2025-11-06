@@ -4,15 +4,18 @@ import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Aerocartrips",
-  description: "We are enthusiastic to provide help, support, and guidance to everyone, ensuring satisfaction outcomes always. we believe every great partnership begins with a conversation. Whether you’re seeking tailored solutions, expert guidance. Our support and consultation services are available 24*7.",
+  description:
+    "We are enthusiastic to provide help, support, and guidance to everyone, ensuring satisfaction outcomes always. we believe every great partnership begins with a conversation. Whether you’re seeking tailored solutions, expert guidance. Our support and consultation services are available 24*7.",
   charset: "utf-8",
-  keywords:
-    "aerocartrips,aerocartrips about, aero, aero car trips, aerotrips",
+  keywords: "aerocartrips,aerocartrips about, aero, aero car trips, aerotrips",
   robots: "index, follow",
   alternates: {
-    canonical: "https://aerocartrips.com/about",
+    canonical: "https://aerocartrips.com/",
   },
-}
+  icons: {
+    icon: "favicon.ico",
+  },
+};
 
 const org = {
   "@context": "https://schema.org",
@@ -45,7 +48,7 @@ export default function RootLayout({ children }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(org).replace(/</g, '\\u003c'),
+            __html: JSON.stringify(org).replace(/</g, "\\u003c"),
           }}
         />
         {/* <link rel="icon" href="/favicon.ico" sizes="32x32" /> */}

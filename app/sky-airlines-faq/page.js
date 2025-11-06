@@ -1001,7 +1001,7 @@ export default function Page() {
       <div className=" text-slate-800  px-6 md:px-20 py-10 space-y-14 max-w-[1000px] bg-[#ffffff50]">
         <div className="flex justify-between gap-6 items-center">
           <h1 className="text-2xl md:text-3xl font-bold text-blue-900">
-          Frequently Asked Questions - FAQ for services
+          Sky Airlines Frequently Asked Questions - FAQ for services
           </h1>
           <Image
             src="/skylogo.png"
