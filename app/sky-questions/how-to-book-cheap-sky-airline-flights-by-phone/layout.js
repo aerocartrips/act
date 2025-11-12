@@ -53,7 +53,14 @@ const faqs = [
 const faq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqs
+  "mainEntity": faqs.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
 };
 
 const today = new Date().toISOString().split("T")[0];
