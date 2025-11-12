@@ -13,7 +13,7 @@ export const metadata = {
     canonical: "https://aerocartrips.com/",
   },
   icons: {
-    icon: "favicon.ico",
+    icon: "/favicon.ico",
   },
 };
 
@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
         />
         {/* <link rel="icon" href="/favicon.ico" sizes="32x32" /> */}
         {/* <link rel="icon" type="image/png" href="/logo/logo.png" sizes="32x32" /> */}
-        <link rel="apple-touch-icon" href="favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
       </head>
       {/* <link rel="icon" href="irail.png" />
     <link rel="canonical" href="https://irail.vercel.app/" /> */}

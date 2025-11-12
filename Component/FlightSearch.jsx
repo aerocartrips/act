@@ -194,7 +194,7 @@ export default function FlightSearch() {
             <input
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
-              placeholder="+91 98765 43210"
+              placeholder="+1 111 111 1111"
               className="w-full rounded-lg border px-3 py-2 text-sm outline-none"
               inputMode="tel"
               pattern="[0-9+ ]{7,20}"
@@ -226,7 +226,7 @@ export default function FlightSearch() {
               <div><strong>To:</strong> {to}</div>
               <div><strong>Departure:</strong> {departureDate ? departureDate.toLocaleDateString() : "-"}</div>
               {tripType === "round" && <div><strong>Return:</strong> {returnDate ? returnDate.toLocaleDateString() : "-"}</div>}
-              <div><strong>Phone:</strong> {mobile}</div>
+              <div><strong>Phone:</strong>+1-111-111-1111</div>
             </div>
           </div>
         </div>

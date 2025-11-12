@@ -27,6 +27,42 @@ export default function sitemap() {
       changeFrequency: "Weekly",
       priority: 1.0,
     },
+    {
+      url: "https://aerocartrips.com/sky-questions/how-to-cancel-a-sky-airline-flight-by-phone",
+      lastModified: twoHoursAgo,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
+    {
+      url: "https://aerocartrips.com/sky-questions/how-to-add-baggage-to-sky-airline-booking",
+      lastModified: twoHoursAgo,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
+    {
+      url: "https://aerocartrips.com/sky-questions/how-to-book-cheap-sky-airline-flights-by-phone",
+      lastModified: twoHoursAgo,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
+    {
+      url: "https://aerocartrips.com/sky-questions/how-to-book-family-travel-via-sky-airline-phone",
+      lastModified: twoHoursAgo,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
+    {
+      url: "https://aerocartrips.com/sky-questions/how-to-book-sky-airline-via-toll-free-number",
+      lastModified: twoHoursAgo,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
+    {
+      url: "https://aerocartrips.com/favicon.ico",
+      lastModified: twoHoursAgo,
+      changeFrequency: "monthly",
+      priority: 1.0,
+    },
     // {
     //   url: "https://aerocartrips.com/american-airlines-cambio-de-fecha-numero-de-atencion-al-cliente.pdf",
     //   lastModified: twoHoursAgo,
