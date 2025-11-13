@@ -58,6 +58,27 @@ export default function sitemap() {
       priority: 1.0,
     },
     {
+      url: "https://aerocartrips.com/sky-questions/how-to-book-group-flights-by-phone",
+      lastModified: twoHoursAgo,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },    {
+      url: "https://aerocartrips.com/sky-questions/how-to-book-last-minute-flights-sky-airline",
+      lastModified: twoHoursAgo,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },    {
+      url: "https://aerocartrips.com/sky-questions/how-to-call-sky-airline-after-hours",
+      lastModified: twoHoursAgo,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },    {
+      url: "https://aerocartrips.com/sky-questions/how-to-call-sky-airline-customer-service-usa",
+      lastModified: twoHoursAgo,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
+    {
       url: "https://aerocartrips.com/favicon.ico",
       lastModified: twoHoursAgo,
       changeFrequency: "monthly",

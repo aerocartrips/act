@@ -13,8 +13,11 @@ const AllLinks = () => {
     { name: 'How to book cheap sky airline', url: '/sky-questions/how-to-book-cheap-sky-airline-flights-by-phone' },
     { name: 'How to book family travel sky airline', url: '/sky-questions/how-to-book-family-travel-via-sky-airline-phone' },
     { name: 'How to book sky airline via toll free number', url: '/sky-questions/how-to-book-sky-airline-via-toll-free-number' },
+    { name: 'How to book sky airline flight by phone', url: '/sky-questions/how-to-book-group-flights-by-phone' },
+    { name: 'How to book last minute flight sky airline', url: '/sky-questions/how-to-book-last-minute-flights-sky-airline' },
+    { name: 'How to call sky airline after hours', url: '/sky-questions/how-to-call-sky-airline-after-hours' },
+    { name: 'How to call sky airline customer service usa', url: '/sky-questions/how-to-call-sky-airline-customer-service-usa' },
 
-    
 
   ];
 
