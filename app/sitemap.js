@@ -79,6 +79,12 @@ export default function sitemap() {
       priority: 1.0,
     },
     {
+      url: "https://aerocartrips.com/sky-airline-contact  ",
+      lastModified: twoHoursAgo,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
+    {
       url: "https://aerocartrips.com/favicon.ico",
       lastModified: twoHoursAgo,
       changeFrequency: "monthly",
