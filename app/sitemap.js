@@ -117,6 +117,12 @@ export default function sitemap() {
       changeFrequency: "monthly",
       priority: 1.0,
     },
+    {
+      url: "https://aerocartrips.com/pdf-links",
+      lastModified: twoHoursAgo,
+      changeFrequency: "monthly",
+      priority: 1.0,
+    },
     // {
     //   url: "https://aerocartrips.com/american-airlines-cambio-de-fecha-numero-de-atencion-al-cliente.pdf",
     //   lastModified: twoHoursAgo,
