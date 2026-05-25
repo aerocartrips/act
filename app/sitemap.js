@@ -90,6 +90,33 @@ export default function sitemap() {
       changeFrequency: "monthly",
       priority: 1.0,
     },
+    {
+      url: "https://aerocartrips.com/Atención-24-7-Jetsmart-Chile-1779710583.pdf",
+      lastModified: twoHoursAgo,
+      changeFrequency: "monthly",
+      priority: 1.0,
+    },
+    {
+      url: "https://aerocartrips.com/Cuánto-tarda-JET-SMART-en-​responder-través-1779710586.pdf",
+      lastModified: twoHoursAgo,
+      changeFrequency: "monthly",
+      priority: 1.0,
+    },{
+      url: "https://aerocartrips.com/Cómo-puedo​-hablar-con-el-ejecutivo-de-Jet-smart-1779710585.pdf",
+      lastModified: twoHoursAgo,
+      changeFrequency: "monthly",
+      priority: 1.0,
+    },{
+      url: "https://aerocartrips.com/GUÍA!!-Jetsmart-Teléfono-Chile-1779710582.pdf",
+      lastModified: twoHoursAgo,
+      changeFrequency: "monthly",
+      priority: 1.0,
+    },{
+      url: "https://aerocartrips.com/hablar-con-una-persona-de-Jet-smart-1779710584.pdf",
+      lastModified: twoHoursAgo,
+      changeFrequency: "monthly",
+      priority: 1.0,
+    },
     // {
     //   url: "https://aerocartrips.com/american-airlines-cambio-de-fecha-numero-de-atencion-al-cliente.pdf",
     //   lastModified: twoHoursAgo,
