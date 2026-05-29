@@ -62,7 +62,7 @@ export default function Footer() {
             <HoverGradient href={"/sky-airlines"}>Sky Airline</HoverGradient>
             <HoverGradient href={"/united"}>Avianca Airlines</HoverGradient>
             <HoverGradient href={"/jetblue"}>Copa Airline</HoverGradient>
-            <HoverGradient href={"/pdf-links"}>PDF</HoverGradient>
+            <HoverGradient href={"/pdf"}>PDF</HoverGradient>
             {/* <HoverGradient href={"/spirit"}>Spirit Airlines</HoverGradient>
             <HoverGradient href={"/britishAirways"}>British Airways</HoverGradient>
             <HoverGradient href={"/americanAirlines"}>American Airline</HoverGradient>

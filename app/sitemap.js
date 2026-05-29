@@ -1,367 +1,141 @@
+import fs from 'fs';
+import path from 'path';
+
+const getPdfEntries = () => {
+  const dataPath = path.join(process.cwd(), 'data', 'pdfs.json');
+  if (!fs.existsSync(dataPath)) {
+    return [];
+  }
+
+  try {
+    return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  } catch (error) {
+    return [];
+  }
+};
+
 export default function sitemap() {
   const twoHoursAgo = new Date();
   twoHoursAgo.setHours(twoHoursAgo.getHours() - 0);
+  const pdfs = getPdfEntries();
+  const pdfUrls = pdfs.map((pdf) => ({
+    url: new URL(pdf.url, 'https://aerocartrips.com').toString(),
+    lastModified: twoHoursAgo,
+    changeFrequency: 'monthly',
+    priority: 1.0,
+  }))
 
   return [
     {
-      url: "https://aerocartrips.com",
+      url: 'https://aerocartrips.com',
       lastModified: twoHoursAgo,
-      changeFrequency: "Weekly",
+      changeFrequency: 'Weekly',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/sky-airlines",
+      url: 'https://aerocartrips.com/sky-airlines',
       lastModified: twoHoursAgo,
-      changeFrequency: "Weekly",
+      changeFrequency: 'Weekly',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/how-to-book-sky-tickets-sky-airlines",
+      url: 'https://aerocartrips.com/how-to-book-sky-tickets-sky-airlines',
       lastModified: twoHoursAgo,
-      changeFrequency: "Weekly",
+      changeFrequency: 'Weekly',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/sky-airlines-faq",
+      url: 'https://aerocartrips.com/sky-airlines-faq',
       lastModified: twoHoursAgo,
-      changeFrequency: "Weekly",
+      changeFrequency: 'Weekly',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/sky-questions/how-to-cancel-a-sky-airline-flight-by-phone",
+      url: 'https://aerocartrips.com/sky-questions/how-to-cancel-a-sky-airline-flight-by-phone',
       lastModified: twoHoursAgo,
-      changeFrequency: "daily",
+      changeFrequency: 'daily',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/sky-questions/how-to-add-baggage-to-sky-airline-booking",
+      url: 'https://aerocartrips.com/sky-questions/how-to-add-baggage-to-sky-airline-booking',
       lastModified: twoHoursAgo,
-      changeFrequency: "daily",
+      changeFrequency: 'daily',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/sky-questions/how-to-book-cheap-sky-airline-flights-by-phone",
+      url: 'https://aerocartrips.com/sky-questions/how-to-book-cheap-sky-airline-flights-by-phone',
       lastModified: twoHoursAgo,
-      changeFrequency: "daily",
+      changeFrequency: 'daily',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/sky-questions/how-to-book-family-travel-via-sky-airline-phone",
+      url: 'https://aerocartrips.com/sky-questions/how-to-book-family-travel-via-sky-airline-phone',
       lastModified: twoHoursAgo,
-      changeFrequency: "daily",
+      changeFrequency: 'daily',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/sky-questions/how-to-book-sky-airline-via-toll-free-number",
+      url: 'https://aerocartrips.com/sky-questions/how-to-book-sky-airline-via-toll-free-number',
       lastModified: twoHoursAgo,
-      changeFrequency: "daily",
+      changeFrequency: 'daily',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/sky-questions/how-to-book-group-flights-by-phone",
+      url: 'https://aerocartrips.com/sky-questions/how-to-book-group-flights-by-phone',
       lastModified: twoHoursAgo,
-      changeFrequency: "daily",
-      priority: 1.0,
-    },    {
-      url: "https://aerocartrips.com/sky-questions/how-to-book-last-minute-flights-sky-airline",
-      lastModified: twoHoursAgo,
-      changeFrequency: "daily",
-      priority: 1.0,
-    },    {
-      url: "https://aerocartrips.com/sky-questions/how-to-call-sky-airline-after-hours",
-      lastModified: twoHoursAgo,
-      changeFrequency: "daily",
-      priority: 1.0,
-    },    {
-      url: "https://aerocartrips.com/sky-questions/how-to-call-sky-airline-customer-service-usa",
-      lastModified: twoHoursAgo,
-      changeFrequency: "daily",
+      changeFrequency: 'daily',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/sky-airline-contact  ",
+      url: 'https://aerocartrips.com/sky-questions/how-to-book-last-minute-flights-sky-airline',
       lastModified: twoHoursAgo,
-      changeFrequency: "daily",
+      changeFrequency: 'daily',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/favicon.ico",
+      url: 'https://aerocartrips.com/sky-questions/how-to-call-sky-airline-after-hours',
       lastModified: twoHoursAgo,
-      changeFrequency: "monthly",
+      changeFrequency: 'daily',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/Atención-24-7-Jetsmart-Chile-1779710583.pdf",
+      url: 'https://aerocartrips.com/sky-questions/how-to-call-sky-airline-customer-service-usa',
       lastModified: twoHoursAgo,
-      changeFrequency: "monthly",
+      changeFrequency: 'daily',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/Cuánto-tarda-JET-SMART-en-​responder-través-1779710586.pdf",
+      url: 'https://aerocartrips.com/sky-airline-contact',
       lastModified: twoHoursAgo,
-      changeFrequency: "monthly",
-      priority: 1.0,
-    },{
-      url: "https://aerocartrips.com/Cómo-puedo​-hablar-con-el-ejecutivo-de-Jet-smart-1779710585.pdf",
-      lastModified: twoHoursAgo,
-      changeFrequency: "monthly",
-      priority: 1.0,
-    },{
-      url: "https://aerocartrips.com/GUÍA!!-Jetsmart-Teléfono-Chile-1779710582.pdf",
-      lastModified: twoHoursAgo,
-      changeFrequency: "monthly",
-      priority: 1.0,
-    },{
-      url: "https://aerocartrips.com/hablar-con-una-persona-de-Jet-smart-1779710584.pdf",
-      lastModified: twoHoursAgo,
-      changeFrequency: "monthly",
+      changeFrequency: 'daily',
       priority: 1.0,
     },
     {
-      url: "https://aerocartrips.com/pdf-links",
+      url: 'https://aerocartrips.com/favicon.ico',
       lastModified: twoHoursAgo,
-      changeFrequency: "monthly",
+      changeFrequency: 'monthly',
       priority: 1.0,
     },
-    // {
-    //   url: "https://aerocartrips.com/american-airlines-cambio-de-fecha-numero-de-atencion-al-cliente.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/delta-air-lines-cambio-de-fecha-numero-de-atencion-al-cliente.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/united-airlines-cambio-de-fecha-detallado.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/delta-airlines-cancelaciones-reembolso-ecredits.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/spirit-airlines-cancelaciones-reembolso-ecredits.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/spirit-airlines-cambio-de-fecha-detallado-phone.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/jetblue-airlines-cambio-de-fecha-detallado.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/dElTaadfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/uNITEddfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/aMERICAndfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/jETBLUedfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/sPIRItdfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/bRITIShdfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/eXPEDIadfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/gOTOGATedfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/kIWidfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/bOOKINgdfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/pSadfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/sKydfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/hAWAIIAndfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/aLASKadfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/sUNCOUNTRydfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/fRONTIErdfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/sOUTHWEStdfhjdfdf.pdf",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/delta",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/united",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/jetblue",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/spirit",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/expedia",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/bookingAboutPage",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/kiwi",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/gotogate",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/americanAirlines",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/hawaiianAirlines",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/alaskaAirlines",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/sunCountryAirlines",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/frontierAirlines",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/southwestAirlines",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
-    // {
-    //   url: "https://aerocartrips.com/psaAirlines",
-    //   lastModified: twoHoursAgo,
-    //   changeFrequency: "daily",
-    //   priority: 1.0,
-    // },
+    {
+      url: 'https://aerocartrips.com/pdf',
+      lastModified: twoHoursAgo,
+      changeFrequency: 'monthly',
+      priority: 1.0,
+    },
+    {
+      url: 'https://aerocartrips.com/upload-pdf',
+      lastModified: twoHoursAgo,
+      changeFrequency: 'monthly',
+      priority: 1.0,
+    },
     {
       url: "https://aerocartrips.com/about",
       lastModified: twoHoursAgo,
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    ...pdfUrls,
   ];
 }
+  
+  
