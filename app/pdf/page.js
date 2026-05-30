@@ -5,7 +5,6 @@ const pdfDataPath = path.join(process.cwd(), 'data', 'pdfs.json');
 
 export default function Page() {
   const pdfs = JSON.parse(fs.readFileSync(pdfDataPath, 'utf8'));
-  console.log(pdfs);
   
 
   return (
@@ -25,7 +24,7 @@ export default function Page() {
                 rel="noopener noreferrer"
                 className="bg-white p-5 rounded-xl shadow hover:shadow-lg transition border border-gray-200 hover:border-blue-500"
               >
-                <h2 className="text-lg font-semibold text-blue-600">{pdf.title}</h2>
+                <h2 className="text-lg font-semibold text-blue-600">{index+1} {pdf.title}</h2>
                 <p className="text-sm text-gray-500 mt-1 break-all">{pdf.url}</p>
               </a>
             ))}
