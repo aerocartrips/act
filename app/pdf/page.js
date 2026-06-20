@@ -1,37 +1,26 @@
 import fs from 'fs';
 import path from 'path';
+import PdfTableClient from '../../components/PdfTableClient';
 
 const pdfDataPath = path.join(process.cwd(), 'data', 'pdfs.json');
 
-export default function Page() {
+export default async function Page({ searchParams }) {
+  const params = await searchParams;
   const pdfs = JSON.parse(fs.readFileSync(pdfDataPath, 'utf8'));
-  
+  const order = params?.order === 'asc' ? 'asc' : 'desc';
 
   return (
     <main className="min-h-screen bg-gray-100 py-10 px-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-8">PDF Library</h1>
 
         {pdfs.length === 0 ? (
           <p className="text-center text-gray-600">No PDFs are available yet.</p>
         ) : (
-          <div className="grid gap-4">
-            {pdfs.map((pdf, index) => (
-              <a
-                key={index}
-                href={`https://aerocartrips.com${pdf.url}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white p-5 rounded-xl shadow hover:shadow-lg transition border border-gray-200 hover:border-blue-500"
-              >
-                <h2 className="text-lg font-semibold text-blue-600">{index+1} {pdf.title}</h2>
-                <p className="text-sm text-gray-500 mt-1 break-all">{pdf.url}</p>
-              </a>
-            ))}
+          <div className="space-y-4">
+            <PdfTableClient pdfs={pdfs} initialOrder={order} />
           </div>
         )}
-
-        
       </div>
     </main>
   );

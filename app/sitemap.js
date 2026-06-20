@@ -20,7 +20,7 @@ export default function sitemap() {
   const pdfs = getPdfEntries();
   const pdfUrls = pdfs.map((pdf) => ({
     url: new URL(pdf.url, 'https://aerocartrips.com').toString(),
-    lastModified: twoHoursAgo,
+    lastModified: pdf.uploadedAt ? new Date(pdf.uploadedAt) : twoHoursAgo,
     changeFrequency: 'monthly',
     priority: 1.0,
   }))

@@ -68,12 +68,13 @@ export async function POST(request) {
 
     const urlPath = `/${uniqueName}`;
     const title = fileName;
+    const uploadedAt = new Date().toISOString();
 
     if (!pdfs.some((item) => item.url === urlPath)) {
-      pdfs.push({ title, url: urlPath });
+      pdfs.push({ title, url: urlPath, uploadedAt });
     }
 
-    uploadedFiles.push({ title, url: urlPath });
+    uploadedFiles.push({ title, url: urlPath, uploadedAt });
   }
 
   fs.writeFileSync(dataFilePath, JSON.stringify(pdfs, null, 2), 'utf8');
