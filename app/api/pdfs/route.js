@@ -3,7 +3,7 @@ import { getAllPdfs } from '../../../lib/mongodb';
 
 export const runtime = 'nodejs';
 
-export async function GET() {
+export async function GET(request) {
   try {
     const pdfs = await getAllPdfs();
     return NextResponse.json({ pdfs });

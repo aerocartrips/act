@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getPdfById, gunzipBuffer, deletePdfById } from '../../../../lib/mongodb';
+import { requireAuth } from '../../../../lib/auth';
 
 export const runtime = 'nodejs';
 
@@ -35,6 +36,11 @@ export async function GET(request, { params }) {
 }
 
 export async function DELETE(request, { params }) {
+  const user = await requireAuth(request, 'admin');
+  if (!user) {
+    return NextResponse.json({ error: 'Admin authentication required.' }, { status: 401 });
+  }
+
   const { id } = params || {};
   if (!id) {
     return NextResponse.json({ error: 'Missing PDF id.' }, { status: 400 });

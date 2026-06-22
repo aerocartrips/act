@@ -1,10 +1,16 @@
 import path from 'path';
 import { NextResponse } from 'next/server';
 import { savePdf } from '../../../lib/mongodb';
+import { requireAuth } from '../../../lib/auth';
 
 export const runtime = 'nodejs';
 
 export async function POST(request) {
+  const user = await requireAuth(request, 'admin');
+  if (!user) {
+    return NextResponse.json({ error: 'Admin authentication required.' }, { status: 401 });
+  }
+
   const formData = await request.formData();
   const files = formData.getAll('pdfs').filter((file) => file && file.name);
 

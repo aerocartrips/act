@@ -1,12 +1,7 @@
 "use client";
 
-"use client";
-
 import { useEffect, useState } from 'react';
 import PdfTableClient from '../../components/PdfTableClient';
-
-const HARDCODED_USERNAME = 'admin150';
-const HARDCODED_PASSWORD = 'adminisok';
 
 export default function UploadPdfPage() {
   const [message, setMessage] = useState('');
@@ -18,18 +13,36 @@ export default function UploadPdfPage() {
   const [pdfs, setPdfs] = useState([]);
   const [loadingPdfs, setLoadingPdfs] = useState(false);
   const [pdfError, setPdfError] = useState('');
+  const [user, setUser] = useState(null);
+  const [sessionLoading, setSessionLoading] = useState(true);
 
-  function handleLoginSubmit(event) {
-    event.preventDefault();
-    setLoginError('');
+  async function loadSession() {
+    setSessionLoading(true);
+    try {
+      const response = await fetch('/api/auth/me', {
+        method: 'GET',
+        credentials: 'include',
+      });
 
-    if (username === HARDCODED_USERNAME && password === HARDCODED_PASSWORD) {
-      setIsLoggedIn(true);
-      setMessage('');
-      setUsername('');
-      setPassword('');
-    } else {
-      setLoginError('Invalid username or password. Please try again.');
+      if (!response.ok) {
+        setIsLoggedIn(false);
+        setUser(null);
+        return;
+      }
+
+      const data = await response.json();
+      if (data?.user) {
+        setIsLoggedIn(true);
+        setUser(data.user);
+      } else {
+        setIsLoggedIn(false);
+        setUser(null);
+      }
+    } catch (error) {
+      setIsLoggedIn(false);
+      setUser(null);
+    } finally {
+      setSessionLoading(false);
     }
   }
 
@@ -38,11 +51,20 @@ export default function UploadPdfPage() {
     setPdfError('');
 
     try {
-      const response = await fetch('/api/pdfs');
+      const response = await fetch('/api/pdfs', { credentials: 'include' });
       if (!response.ok) {
+        if (response.status === 401) {
+          setIsLoggedIn(false);
+          setUser(null);
+          setPdfError('Your session has expired. Please sign in again.');
+          setPdfs([]);
+          return;
+        }
+
         const payload = await response.json();
         throw new Error(payload?.error || 'Unable to load PDFs.');
       }
+
       const data = await response.json();
       const pdfDocs = data?.pdfs || [];
       const items = pdfDocs.map((doc) => ({
@@ -63,10 +85,60 @@ export default function UploadPdfPage() {
   }
 
   useEffect(() => {
+    loadSession();
+  }, []);
+
+  useEffect(() => {
     if (isLoggedIn) {
       loadPdfs();
     }
   }, [isLoggedIn]);
+
+  async function handleLoginSubmit(event) {
+    event.preventDefault();
+    setLoginError('');
+    setMessage('');
+
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ username: username.trim(), password }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        setLoginError(data.error || 'Invalid username or password.');
+        return;
+      }
+
+      setIsLoggedIn(true);
+      setUser(data.user || { username: username.trim() });
+      setUsername('');
+      setPassword('');
+      setMessage('');
+      await loadPdfs();
+    } catch (error) {
+      setLoginError('Unable to sign in. Please try again.');
+    }
+  }
+
+  async function handleLogout() {
+    setMessage('');
+    try {
+      await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+    } finally {
+      setIsLoggedIn(false);
+      setUser(null);
+      setPdfs([]);
+    }
+  }
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -79,12 +151,20 @@ export default function UploadPdfPage() {
     try {
       const response = await fetch('/api/upload-pdf', {
         method: 'POST',
+        credentials: 'include',
         body: formData,
       });
 
       const result = await response.json();
 
       if (!response.ok) {
+        if (response.status === 401) {
+          setIsLoggedIn(false);
+          setUser(null);
+          setLoginError('Authentication required. Please sign in again.');
+          return;
+        }
+
         setMessage(result.error || 'Unable to upload PDF files.');
       } else {
         setMessage(`Uploaded ${result.uploadedFiles.length} PDF(s) successfully.`);
@@ -101,9 +181,19 @@ export default function UploadPdfPage() {
   async function handleDeletePdf(id) {
     setMessage('');
     try {
-      const response = await fetch(`/api/pdfs/${id}`, { method: 'DELETE' });
+      const response = await fetch(`/api/pdfs/${id}`, {
+        method: 'DELETE',
+        credentials: 'include',
+      });
       const result = await response.json();
       if (!response.ok) {
+        if (response.status === 401) {
+          setIsLoggedIn(false);
+          setUser(null);
+          setLoginError('Authentication required. Please sign in again.');
+          return;
+        }
+
         setMessage(result.error || 'Unable to delete the PDF.');
       } else {
         setMessage('PDF deleted successfully.');
@@ -119,16 +209,21 @@ export default function UploadPdfPage() {
       <div className="max-w-5xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-6">Upload PDF Files</h1>
 
-        {!isLoggedIn ? (
+        {sessionLoading ? (
+          <div className="space-y-6 bg-white shadow rounded-xl p-8 text-center text-gray-600">
+            Checking authentication…
+          </div>
+        ) : !isLoggedIn ? (
           <div className="space-y-6 bg-white shadow rounded-xl p-8">
             <p className="text-center text-gray-600 mb-4">
-              Please sign in with the hardcoded credentials to upload and manage PDFs.
+              Sign in with your username and password to upload and manage PDFs.
             </p>
 
             <form onSubmit={handleLoginSubmit} className="space-y-4">
               <label className="block text-sm font-medium text-gray-700">
                 Username
                 <input
+                  autoComplete="username"
                   value={username}
                   onChange={(event) => setUsername(event.target.value)}
                   type="text"
@@ -139,6 +234,7 @@ export default function UploadPdfPage() {
               <label className="block text-sm font-medium text-gray-700">
                 Password
                 <input
+                  autoComplete="current-password"
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                   type="password"
@@ -158,11 +254,37 @@ export default function UploadPdfPage() {
               ) : null}
             </form>
           </div>
+        ) : !(user?.role === 'admin') ? (
+          <div className="space-y-6 bg-white shadow rounded-xl p-8 text-center text-gray-600">
+            You are signed in but do not have administrator access.
+            <div className="mt-4">
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              >
+                Sign out
+              </button>
+            </div>
+          </div>
         ) : (
           <div className="space-y-8">
             <div className="space-y-4 bg-white shadow rounded-xl p-8">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-gray-600">
+                  Signed in as <strong>{user?.username || 'unknown'}</strong>.
+                </p>
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                >
+                  Sign out
+                </button>
+              </div>
+
               <p className="text-center text-gray-600">
-                You are signed in. Upload one or more PDF files and manage them below.
+                Upload one or more PDF files and manage them below.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
