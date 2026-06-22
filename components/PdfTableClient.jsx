@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-export default function PdfTableClient({ pdfs = [], initialOrder = "desc" }) {
+export default function PdfTableClient({ pdfs = [], initialOrder = "desc", onDelete }) {
   const [order, setOrder] = useState(initialOrder === "asc" ? "asc" : "desc");
   const [selected, setSelected] = useState({});
   const [copyMessage, setCopyMessage] = useState("");
@@ -59,7 +59,7 @@ export default function PdfTableClient({ pdfs = [], initialOrder = "desc" }) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between rounded-xl bg-white p-4 shadow border border-gray-200">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 flex-wrap">
           <label className="inline-flex items-center gap-2 text-sm text-gray-700">
             <input type="checkbox" checked={allSelected} onChange={toggleSelectAll} />
             Select all
@@ -96,6 +96,9 @@ export default function PdfTableClient({ pdfs = [], initialOrder = "desc" }) {
               <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">Title</th>
               <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">URL</th>
               <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">Uploaded</th>
+              {onDelete ? (
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">Actions</th>
+              ) : null}
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200 bg-white">
@@ -118,6 +121,17 @@ export default function PdfTableClient({ pdfs = [], initialOrder = "desc" }) {
                   </a>
                 </td>
                 <td className="px-4 py-4 text-sm text-gray-700">{pdf.uploadedAt ? new Date(pdf.uploadedAt).toLocaleString() : 'Unknown'}</td>
+                {onDelete ? (
+                  <td className="px-4 py-4 text-sm text-gray-700">
+                    <button
+                      type="button"
+                      onClick={() => onDelete(pdf.id)}
+                      className="inline-flex items-center rounded-md bg-red-600 px-3 py-2 text-white hover:bg-red-700"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                ) : null}
               </tr>
             ))}
           </tbody>

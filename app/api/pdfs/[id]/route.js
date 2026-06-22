@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getPdfById, gunzipBuffer } from '../../../../lib/mongodb';
+import { getPdfById, gunzipBuffer, deletePdfById } from '../../../../lib/mongodb';
 
 export const runtime = 'nodejs';
 
@@ -32,4 +32,18 @@ export async function GET(request, { params }) {
     status: 200,
     headers,
   });
+}
+
+export async function DELETE(request, { params }) {
+  const { id } = params || {};
+  if (!id) {
+    return NextResponse.json({ error: 'Missing PDF id.' }, { status: 400 });
+  }
+
+  const deleted = await deletePdfById(id);
+  if (!deleted) {
+    return NextResponse.json({ error: 'PDF not found or could not be deleted.' }, { status: 404 });
+  }
+
+  return NextResponse.json({ success: true });
 }
