@@ -38,10 +38,11 @@ export default function PdfTableClient({ pdfs = [], initialOrder = "desc" }) {
   const selectedCount = Object.values(selected).filter(Boolean).length;
 
   const copySelected = async () => {
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://aerocartrips.com';
     const urls = sorted
       .map((p, i) => ({ p, i }))
       .filter(({ i }) => selected[i])
-      .map(({ p }) => new URL(p.url, "https://aerocartrips.com").toString());
+      .map(({ p }) => new URL(p.url, origin).toString());
 
     if (!urls.length) return;
 
@@ -112,7 +113,7 @@ export default function PdfTableClient({ pdfs = [], initialOrder = "desc" }) {
                 </td>
                 <td className="px-4 py-4 text-sm text-gray-700">{pdf.title}</td>
                 <td className="px-4 py-4 text-sm text-blue-600 hover:text-blue-800 break-all">
-                  <a href={new URL(pdf.url, "https://aerocartrips.com").toString()} target="_blank" rel="noreferrer">
+                  <a href={pdf.url} target="_blank" rel="noreferrer">
                     {pdf.url}
                   </a>
                 </td>

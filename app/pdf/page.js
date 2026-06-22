@@ -1,13 +1,54 @@
-import fs from 'fs';
-import path from 'path';
+"use client";
+
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import PdfTableClient from '../../components/PdfTableClient';
 
-const pdfDataPath = path.join(process.cwd(), 'data', 'pdfs.json');
+export default function Page() {
+  const searchParams = useSearchParams();
+  const order = searchParams?.get?.('order') === 'asc' ? 'asc' : 'desc';
 
-export default async function Page({ searchParams }) {
-  const params = await searchParams;
-  const pdfs = JSON.parse(fs.readFileSync(pdfDataPath, 'utf8'));
-  const order = params?.order === 'asc' ? 'asc' : 'desc';
+  const [pdfs, setPdfs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let mounted = true;
+    setLoading(true);
+    fetch('/api/pdfs')
+      .then(async (res) => {
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`API error ${res.status}: ${text}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (!mounted) return;
+        const pdfDocs = data?.pdfs || [];
+        const items = pdfDocs.map((doc) => ({
+          id: doc._id?.toString?.() || doc._id,
+          title: doc.title,
+          url: `/api/pdfs/${doc._id}`,
+          uploadedAt: doc.uploadedAt,
+          originalSize: doc.originalSize,
+          compressedSize: doc.compressedSize,
+        }));
+        setPdfs(items);
+        setError(null);
+      })
+      .catch((err) => {
+        if (!mounted) return;
+        setError(err.message || 'Failed to load PDFs');
+      })
+      .finally(() => {
+        if (mounted) setLoading(false);
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   return (
     <main className="min-h-screen bg-gray-100 py-10 px-4">
